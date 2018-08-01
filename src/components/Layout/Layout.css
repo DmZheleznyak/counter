@@ -1,0 +1,14 @@
+.AllContent {
+	height: 100vh;
+}
+
+.Header {
+	height: 7vh;
+	background-color: lightsteelblue;
+}
+
+.Content {
+	display: flex;
+	background-color: lavender;
+	height: 93vh;
+}

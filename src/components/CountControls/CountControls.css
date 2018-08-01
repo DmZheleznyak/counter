@@ -1,0 +1,14 @@
+.CountControls {
+	width: 45%;
+	height: 90vh;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 10px;
+	overflow: auto;
+}
+
+.CountControls h2 {
+	margin: 0.5rem 0;
+}

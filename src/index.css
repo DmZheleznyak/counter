@@ -1,0 +1,15 @@
+@font-face {
+	font-family: 'KellySlabRegular';
+	src: url('./assets/fonts/KellySlab/KellySlabRegular.eot');
+	src: url('./assets/fonts/KellySlab/KellySlabRegular.eot') format('embedded-opentype'),
+			 url('./assets/fonts/KellySlab/KellySlabRegular.woff2') format('woff2'),
+			 url('./assets/fonts/KellySlab/KellySlabRegular.woff') format('woff'),
+			 url('./assets/fonts/KellySlab/KellySlabRegular.ttf') format('truetype'),
+			 url('./assets/fonts/KellySlab/KellySlabRegular.svg#KellySlabRegular') format('svg');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+	font-family: 'KellySlabRegular';
+}

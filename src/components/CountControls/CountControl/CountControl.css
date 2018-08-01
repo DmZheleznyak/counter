@@ -1,0 +1,10 @@
+.CountControl {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+}
+
+.CountControl img {
+	height: 48px;
+}
