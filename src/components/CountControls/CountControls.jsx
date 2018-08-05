@@ -15,7 +15,7 @@ const countControls = (props) => {
 					quantity = { props.kinds[kind].quantity }
 					text = { props.kinds[kind].text }
 					added = { () => props.added(props.kinds[kind].name)  }
-					removed = { () => props.removed(props.kinds[kind].name) } />
+					removed = { () => props.removed(props.kinds[kind].name)	} />
 			)
 		})
 

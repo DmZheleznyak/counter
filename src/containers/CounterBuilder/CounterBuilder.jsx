@@ -9,11 +9,10 @@ import WeekStatistic from '../../components/CountStatistic/AllTimeStatistic/Week
 
 import glassOfWater from '../../assets/logos/glassOfWater.svg'
 import cupOfCoffee from '../../assets/logos/coffee.svg'
+import cupOfTea from '../../assets/logos/tea.svg'
+import glassOfJuice from '../../assets/logos/orangeJuice.svg'
+import glassOfMilk from '../../assets/logos/milk.svg'
 
-
-// 	tea: 0.25,
-// 	juice: 0.2,
-// 	milk: 0.1
 
 class CounterBuilder extends Component {
 	state = {
@@ -32,6 +31,30 @@ class CounterBuilder extends Component {
 				volume: 0.15,
 				text: '(150 ml)',
 				icon: cupOfCoffee,
+				date: new Date().getTime()
+			},
+			{
+				name: 'tea',
+				quantity: 0,
+				volume: 0.25,
+				text: '(250 ml)',
+				icon: cupOfTea,
+				date: new Date().getTime()
+			},
+			{
+				name: 'juice',
+				quantity: 0,
+				volume: 0.2,
+				text: '(200 ml)',
+				icon: glassOfJuice,
+				date: new Date().getTime()
+			},
+			{
+				name: 'milk',
+				quantity: 0,
+				volume: 0.1,
+				text: '(100 ml)',
+				icon: glassOfMilk,
 				date: new Date().getTime()
 			}
 		],
@@ -108,7 +131,7 @@ class CounterBuilder extends Component {
 		const date = new Date().getTime()
 		const arrayOfLocalFromState = []
 
-		for (let i = 0; i <= 7 ; i++) {
+		for (let i = 1; i <= 7 ; i++) {
 			let days = new Date(date - (86400000 * i)).getDate()
 			
 			Object

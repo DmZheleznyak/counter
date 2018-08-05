@@ -5,6 +5,18 @@
 	width: 100%;
 }
 
+.CountControl > * {
+	width: 16.5%;
+}
+
+.CountControl button {
+	width: 10%;
+}
+
+.CountControl strong {
+	padding: 45%;
+}
+
 .CountControl img {
 	height: 48px;
 }
