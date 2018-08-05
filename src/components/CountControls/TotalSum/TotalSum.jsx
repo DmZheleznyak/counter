@@ -13,13 +13,13 @@ const totalSum = (props) => {
 
 	return (
 	<Auxilliary>
-		<h3>Total list what you have drunk today:</h3>
-		<ul>
-			{ kindsItem }
-		</ul>
-		<p>total Sum : { props.total } litr</p>
-		<button onClick = { props.close }>Exit to fix</button>
-		<button onClick = { props.added }>All right and exit</button>
+			<h3>Total list what you have drunk today:</h3>
+			<ul>
+				{ kindsItem }
+			</ul>
+			<p>total Sum : { props.total } litr</p>
+			<button onClick = { props.close }>Exit to fix</button>
+			<button onClick = { props.added }>All right and exit</button>
 	</Auxilliary>
 )}
 
