@@ -11,7 +11,7 @@ const weekStatistic = (props) => {
 			<DayStatistic	day = { day }	/>
 		</li>
 	))
-
+	
 	return (
 		<Auxilliary>
 			<h3>Statistic during last week :</h3>
@@ -19,7 +19,7 @@ const weekStatistic = (props) => {
 				{ listItems }
 			</ul>
 			{/* <p>total average</p> */}
-			<button>exit</button><button>Ok</button>			
+			<button onClick = { props.closed }>ExiT</button>			
 		</Auxilliary>
 	)	
 }

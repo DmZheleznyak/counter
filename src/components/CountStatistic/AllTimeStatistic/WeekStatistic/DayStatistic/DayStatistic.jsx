@@ -10,7 +10,7 @@ const dayStatistic = (props) => {
 
 	const listKinds = props.day.map(kind => (
 		<li key = { kind.name }>
-			{ kind.name } : { kind.quantity * kind.volume }
+			{ kind.name } : { (kind.quantity * kind.volume).toFixed(2) } l
 		</li>
 	))
 
@@ -36,7 +36,7 @@ const dayStatistic = (props) => {
 			<ul className = { classes.ListKinds }>
 				{ listKinds }
 			</ul>
-			<p>total Sum : { totalResult } litr</p>
+			<p><strong>total Sum : { totalResult.toFixed(2) } Litr</strong></p>
 		</div>
 	)
 }

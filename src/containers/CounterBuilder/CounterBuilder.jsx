@@ -165,7 +165,8 @@ class CounterBuilder extends Component {
 				<Modal show = { this.state.purchasingWeekStatistic }
 							 clicked = { this.purchaseWeekStatisticCancelHandler }	>
 					<WeekStatistic 
-						listDays = { this.state.lastWeek }/>
+						listDays = { this.state.lastWeek }
+						closed = { this.purchaseWeekStatisticCancelHandler }/>
 				</Modal>
 				<CountControls 
 					kinds = { this.state.kinds }

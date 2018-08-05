@@ -17,7 +17,7 @@ const totalSum = (props) => {
 			<ul>
 				{ kindsItem }
 			</ul>
-			<p>total Sum : { props.total } litr</p>
+			<p>total Sum : <strong>{ props.total.toFixed(2) } Litr</strong></p>
 			<button onClick = { props.close }>Exit to fix</button>
 			<button onClick = { props.added }>All right and exit</button>
 	</Auxilliary>
