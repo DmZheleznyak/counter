@@ -23,7 +23,8 @@ class CounterBuilder extends Component {
 				volume: 0.25,
 				text: '(250 ml)',
 				icon: glassOfWater,
-				date: new Date().getTime()  
+				date: new Date().getTime(),
+				color: '#4193C5'  
 			},
 			{
 				name: 'coffee',
@@ -31,7 +32,8 @@ class CounterBuilder extends Component {
 				volume: 0.15,
 				text: '(150 ml)',
 				icon: cupOfCoffee,
-				date: new Date().getTime()
+				date: new Date().getTime(),
+				color: '#865021'
 			},
 			{
 				name: 'tea',
@@ -39,7 +41,8 @@ class CounterBuilder extends Component {
 				volume: 0.25,
 				text: '(250 ml)',
 				icon: cupOfTea,
-				date: new Date().getTime()
+				date: new Date().getTime(),
+				color: '#E91801'
 			},
 			{
 				name: 'juice',
@@ -47,7 +50,8 @@ class CounterBuilder extends Component {
 				volume: 0.2,
 				text: '(200 ml)',
 				icon: glassOfJuice,
-				date: new Date().getTime()
+				date: new Date().getTime(),
+				color: '#FCC200'
 			},
 			{
 				name: 'milk',
@@ -55,13 +59,30 @@ class CounterBuilder extends Component {
 				volume: 0.1,
 				text: '(100 ml)',
 				icon: glassOfMilk,
-				date: new Date().getTime()
+				date: new Date().getTime(),
+				color: 'white'
 			}
 		],
 		purchasing: false,
 		purchasingWeekStatistic: false,
+		today: [],
 		totalToday: 0,
 		lastWeek: [] 
+	}
+
+	// componentWillMount() {
+	// 	console.log(this.state.today)
+	// }
+
+	todayStatistic = () => {
+		const today = this.currentDate()
+		let localToday = []
+
+		Object										// Данные за текущий день
+			.keys(localStorage)
+			.map( day => {	if (today === day) return localToday = JSON.parse(localStorage[day])	} )
+		
+		return localToday
 	}
 
 	addKindHandler = (type) => {
@@ -120,35 +141,50 @@ class CounterBuilder extends Component {
 	}
 
 	addToLocalStorageHandler = () => {
-		const updatedKinds = [ ...this.state.kinds ]
-		let value = JSON.stringify(updatedKinds)
-		localStorage[this.currentDate()] = value
+
+		if (this.todayStatistic() === [] ) {
+			const updatedKinds = [ ...this.state.kinds ]
+			let value = JSON.stringify(updatedKinds)
+			localStorage[this.currentDate()] = value			
+		} else {
+			const updatedKinds = [ ...this.state.kinds ]
+			
+		}
+
+		// const updatedKinds = [ ...this.state.kinds ]
+
+		// const currentQuantityToday = updatedKinds.map(kind => kind.quantity )
+
+		
+
+		// let value = JSON.stringify(updatedKinds)
+		// localStorage[this.currentDate()] = value
 
 		this.purchaseCancelHandler()
 	}
 
-	weekStatisticHandler = () => {
-		const date = new Date().getTime()
-		const arrayOfLocalFromState = []
+	// weekStatisticHandler = () => {
+	// 	const date = new Date().getTime()
+	// 	const arrayOfLocalFromState = []
 
-		for (let i = 1; i <= 7 ; i++) {
-			let days = new Date(date - (86400000 * i)).getDate()
+	// 	for (let i = 1; i <= 8 ; i++) {
+	// 		let days = new Date(date - (86400000 * i)).getDate()
 			
-			Object
-				.keys(localStorage)
-				.map(key => {
-					let localDay = +key.split('',1)[0]
-					if (days === localDay) {
-						arrayOfLocalFromState.push(JSON.parse(localStorage[key]))
-					}
-				})
-		}
+	// 		Object
+	// 			.keys(localStorage)
+	// 			.map(key => {
+	// 				let localDay = +key.split('',1)[0]
+	// 				if (days === localDay) {
+	// 					arrayOfLocalFromState.push(JSON.parse(localStorage[key]))
+	// 				}
+	// 			})
+	// 	}
 
-		const dataLastWeek = arrayOfLocalFromState.reverse()
-		this.setState({lastWeek: dataLastWeek })
+	// 	const dataLastWeek = arrayOfLocalFromState.reverse()
+	// 	this.setState({lastWeek: dataLastWeek })
 		
-		this.purchaseWeekStatisticHandler()
-	}
+	// 	this.purchaseWeekStatisticHandler()
+	// }
 
 	render () {
 		return (
@@ -175,7 +211,8 @@ class CounterBuilder extends Component {
 					addAll = { this.addAllHandler } />
 				<CountStatistic 
 					todayTotal = { this.state.totalToday }
-					showWeekStatistic = { this.weekStatisticHandler }	/>	
+					showWeekStatistic = { this.weekStatisticHandler }
+					chartData = { this.todayStatistic }	/>	
 			</Auxilliary>
 		)
 	}

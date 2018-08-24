@@ -6,8 +6,11 @@ import TodayStatistic from './TodayStatistic/TodayStatistic'
 
 const countStatistic = (props) => (
 	<div className = { classes.CountStatistic }>
-		<TodayStatistic total = {props.todayTotal} />
-		<AllTimeStatistic showWeek = {props.showWeekStatistic}	/>
+		<TodayStatistic 
+			total = { props.todayTotal }
+			chartData = { props.chartData } />
+		<AllTimeStatistic 
+			showWeek = { props.showWeekStatistic }	/>
 	</div>
 )
 
