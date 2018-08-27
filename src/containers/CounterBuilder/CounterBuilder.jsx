@@ -70,10 +70,6 @@ class CounterBuilder extends Component {
 		lastWeek: [] 
 	}
 
-	// componentWillMount() {
-	// 	console.log(this.state.today)
-	// }
-
 	todayStatistic = () => {
 		const today = this.currentDate()
 		let localToday = []
@@ -127,7 +123,7 @@ class CounterBuilder extends Component {
 	addAllHandler = () => {
 		const updateTotalToday = this.state.kinds
 			.map(kind => kind.quantity * kind.volume )
-			.reduce((sum, el) => sum + el , this.state.totalToday)
+			.reduce((sum, el) => sum + el , 0)
 
 		this.setState({ totalToday: updateTotalToday })
 
@@ -142,23 +138,30 @@ class CounterBuilder extends Component {
 
 	addToLocalStorageHandler = () => {
 
-		if (this.todayStatistic() === [] ) {
-			const updatedKinds = [ ...this.state.kinds ]
+		const updatedKinds = [ ...this.state.kinds ]
+
+		if (this.todayStatistic().length === 0 ) {
+
 			let value = JSON.stringify(updatedKinds)
-			localStorage[this.currentDate()] = value			
+			localStorage[this.currentDate()] = value
+
 		} else {
-			const updatedKinds = [ ...this.state.kinds ]
-			
+
+			const updateLocalState = [...this.todayStatistic()]
+			const currentQuantityToday = updatedKinds.map(kind => kind.quantity )
+			const localQuantityToday = updateLocalState.map(kind => kind.quantity)
+
+			for (let i = 0 ; i < currentQuantityToday.length ; i++ ) {
+				updateLocalState[i].quantity = currentQuantityToday[i] + localQuantityToday[i]
+				updateLocalState[i].quantity.toFixed(2)
+			}
+
+			let value = JSON.stringify(updateLocalState)
+			localStorage[this.currentDate()] = value
 		}
 
-		// const updatedKinds = [ ...this.state.kinds ]
-
-		// const currentQuantityToday = updatedKinds.map(kind => kind.quantity )
-
-		
-
-		// let value = JSON.stringify(updatedKinds)
-		// localStorage[this.currentDate()] = value
+		updatedKinds.map(kind => kind.quantity = 0)
+		this.setState({ kinds: updatedKinds })
 
 		this.purchaseCancelHandler()
 	}
